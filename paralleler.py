@@ -9,7 +9,7 @@ ncpus = os.environ.get("SLURM_NTASKS")
 print(ncpus)
 def process_pcd(pcd):
   print(pcd)
-  if not os.path.exists(pcd + "/all_scans.bin"):
+  if not os.path.exists(pcd + "all_scans.bin"):
     print("would re run ")
     ##sp.run(f"./main '{pcd}'",shell=True)
   else :
