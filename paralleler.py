@@ -19,7 +19,7 @@ with mp.Pool(int(ncpus)) as pool:
   pool.map(process_pcd,["../finished/"+pcd for pcd in pcds])
 
 
-#all_scans = Path("../finished/").rglob("all_scans")
-#with zf.ZipFile("all_scans.zip","w") as ophile:
-#    for scan in all_scans:
-#        ophile.write(scan)
+all_scans = Path("../finished/").rglob("all_scans")
+with zf.ZipFile("all_scans.zip","w") as ophile:
+    for scan in all_scans:
+        ophile.write(scan)
