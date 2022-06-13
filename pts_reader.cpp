@@ -6,7 +6,6 @@
 #include <iomanip>
 #include <vector>
 #include <filesystem>
-#include <ranges>
 #include <string_view>
 #include <algorithm>
 using namespace std;
@@ -16,53 +15,6 @@ struct PT
     float y;
     float z;
 };
-void read_xyz()
-{
-    string name = "suzanne_pts.xyz";
-    uintmax_t size = filesystem::file_size(name);
-    ifstream ifile(name);
-    string buf(size, '\0');
-    ifile.read(buf.data(), size);
-    auto floats =
-        buf | views::split(' ');
-    vector<float> coords;
-    for (auto i: floats) {
-        string flt{};
-        for (auto ptr = i.begin(); ptr != i.end();ptr++) {
-            if (*ptr =='\n') {
-                continue;
-            }
-            flt +=*ptr;
-        }
-        if( flt != "") {
-        coords.push_back(stof(flt));
-        }
-    }
-    // make a new ptr and reinterpret cast the coords data to a pointer of PT structs
-    PT * pts_ptr = reinterpret_cast<PT * >(coords.data());
-    // attempt to print out data from the first element
-    PT pt = pts_ptr[0];
-    cout << pt.x << ' ' << pt.y << ' ' << pt.z << endl;
-
-    ofstream ofile("suz.binary");
-    ofile.write(reinterpret_cast<char *>(coords.data()),coords.size()*sizeof(float));
-    ofile.close();
-
-}
-void yaml_reader() {
-    string name = "topic1.yaml";
-    uintmax_t size = filesystem::file_size(name);
-    ifstream ifile(name);
-    string buf(size, '\0');
-    ifile.read(buf.data(), size);
-    size_t ind = buf.find(']');
-    cout << buf.size() << endl;
-    for(int i = 0; i < ind ; i++) {
-    cout << buf[i];
-    }
-    cout << endl;
-
-}
 struct pcdPt{
     float x;
     float y;
