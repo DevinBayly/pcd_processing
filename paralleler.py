@@ -10,7 +10,10 @@ print(ncpus)
 def process_pcd(pcd):
   print(pcd)
   if not os.path.exists(pcd + "/all_scans.bin"):
-    sp.run(f"./main '{pcd}'",shell=True)
+    print("would re run ")
+    ##sp.run(f"./main '{pcd}'",shell=True)
+  else :
+      print("already run")
 
 pcds = os.listdir("../finished")
 print(pcds)
