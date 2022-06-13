@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "pts_reader.h"
 
-int main () {
-    run_converter();
+int main (int argc, char ** argv) {
+    std::string pth = argv[1];
+    run_converter(pth);
 }

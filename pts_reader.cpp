@@ -95,9 +95,8 @@ void process_file(string name,ofstream & ofile) {
     ofile.write(reinterpret_cast<char *>(pts.data()),pts.size()*sizeof(PT));
     ifile.close();
 }
-void run_converter() {
+void run_converter(string pth) {
     // string name = "/home/dash/Documents/output_pcd/258.517830990.pcd";
-    string pth = "/home/bigo/Downloads/output_pcd/";
     vector<string> names{};
     for (auto & name : filesystem::directory_iterator(pth)){
         cout << name.path() << endl;

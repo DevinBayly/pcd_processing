@@ -1,1 +1,1 @@
-void run_converter();
+void run_converter(string pth);
